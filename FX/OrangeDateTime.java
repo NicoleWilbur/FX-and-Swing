@@ -1,14 +1,3 @@
-/***
- =================
- Name: Nicole Wilbur
-
- Project Name: CSC372-CTA03 -- PORTFOLIO MILESTONE #1 Corrections
-
- 4/11/21 updates: comments along side code.
- Summary: changed the display date time label color to show better on orange colored background.
- ==================
- ***/
-
 package sample;
 import java.io.*;
 import javafx.application.*;
@@ -28,9 +17,11 @@ public class OrangeDateTime extends Application {
     @Override
     public void start(Stage stage) {
         try {
+            //adds text field
             Text dateTimeLabel = new Text("Date and Time: ");
             TextField dateTimeDisplay = new TextField();
 
+            //creates menu bar and items
             MenuBar menuBar = new MenuBar();
             Menu mainMenu = new Menu("Menu");
             MenuItem displayDT = new MenuItem("Display Date & Time");
@@ -40,6 +31,7 @@ public class OrangeDateTime extends Application {
             menuBar.getMenus().addAll(mainMenu);
             mainMenu.getItems().addAll(displayDT, printFile, colorFun, closeApp);
 
+            //sets border and grid panes
             BorderPane borderPane = new BorderPane();
             borderPane.setMinSize(500, 200);
             borderPane.setTop(menuBar);
@@ -49,6 +41,7 @@ public class OrangeDateTime extends Application {
             gridPane.setAlignment(Pos.CENTER);
             borderPane.setCenter(gridPane);
 
+            //creates an action listener and event for the displayDT menu item
             displayDT.setOnAction(actionEvent ->
             {
                 gridPane.getColumnConstraints().add(new ColumnConstraints(200));
@@ -59,7 +52,7 @@ public class OrangeDateTime extends Application {
                 String whatTime = LocalDateTime.now().toString();
                 dateTimeDisplay.setText(whatTime);
             });
-
+            //creates an action listener and event for the print menu item
             printFile.setOnAction(actionEvent ->
             {
                 String file = "/Users/killersheltie/log.txt";
@@ -82,7 +75,7 @@ public class OrangeDateTime extends Application {
                     e.printStackTrace();
                 }
             });
-
+            //creates an action listener and event for the color menu item
             colorFun.setOnAction(actionEvent ->
                     {
                         int min = (int) Math.ceil(95);
@@ -91,15 +84,15 @@ public class OrangeDateTime extends Application {
                         String hslString = "hsl(24,100%," + hslHueRandom + "%)";
                         gridPane.setBackground(new Background(new BackgroundFill(Color.web(hslString),
                                 null, null)));
-                        dateTimeLabel.setFill(Color.web("White"));      //4-11-21 changed label text color to make
-                    }                                                   // more visible on the orange background
+                        dateTimeLabel.setFill(Color.web("White"));
+                    }
             );
-
+            //creates an action listener and event for the close menu item
             closeApp.setOnAction(actionEvent ->
             {
                 Platform.exit();
             });
-
+            //creates the scene and sets the title
             Scene scene = new Scene(borderPane);
             stage.setTitle("Module 3 CTA Option 2");
             stage.setScene(scene);

@@ -1,3 +1,3 @@
 ### FX and Swing
 
-Two small Java programs utilizing FX and swing for GUI implementation.
+Two small Java programs utilizing JavaFX and swing for GUI implementation.
